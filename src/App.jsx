@@ -29,6 +29,8 @@ export default function App() {
     year: 'numeric'
   })
 
+
+
   return (
     <div className="app">
       <header className="topbar">
@@ -61,6 +63,13 @@ export default function App() {
           <div>Halaman tidak ditemukan</div>
         )}
       </main>
+
+      
+      <div style={{ marginTop: 24, textAlign: 'center', fontSize: 12, color: '#888' }}>
+        Andhi Rahman – Bellagio
+      </div>
+
+
     </div>
   )
 }
