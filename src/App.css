@@ -1,5 +1,19 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+:root {
+  --rb-blue: #2563eb;
+  --rb-green: #16a34a;
+  --rb-red: #dc2626;
+  --rb-yellow: #facc15;
+
+  --rb-bg: #f7f8fa;
+  --rb-card: #ffffff;
+  --rb-border: #e5e7eb;
+
+  --rb-text: #111827;
+  --rb-muted: #6b7280;
+}
+
 body {
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   background: #f5f5f0;

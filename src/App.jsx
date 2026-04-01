@@ -35,8 +35,8 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <div>
-          <h1 className="app-title">WorkTracker Pro</h1>
-          <p className="app-sub">Pencatatan pekerjaan & upah</p>
+          <h1 className="app-title">Bellagio Work & Pay </h1>
+          <p className="app-sub">Aplikasi Pencatatan Pekerjaan & Upah</p>
         </div>
         <span className="badge-month">{monthLabel}</span>
       </header>
