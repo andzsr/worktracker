@@ -7,6 +7,7 @@ import Compare from './pages/Compare'
 import JobTypes from './pages/JobTypes'
 import Pockets from './pages/Pockets'
 import Checklist from './pages/Checklist'
+import Report from './pages/Report'
 import WorkerPortal from './pages/WorkerPortal'
 import './App.css'
 
@@ -18,6 +19,7 @@ const TABS = [
   { id: 'pockets', label: 'Kantong', component: Pockets },
   { id: 'checklist', label: 'Checklist', component: Checklist },
   { id: 'compare', label: 'Komparasi Pendapatan', component: Compare },
+  { id: 'report', label: 'Report Mingguan', component: Report },
 ]
 
 export default function App() {
@@ -29,7 +31,6 @@ export default function App() {
   const [authLoading, setAuthLoading] = useState(true)
 
   const triggerRefresh = () => setRefresh(r => r + 1)
-
   const now = new Date()
   const monthLabel = now.toLocaleString('id-ID', { month: 'long', year: 'numeric' })
 
@@ -54,10 +55,7 @@ export default function App() {
   }
 
   if (authLoading) return <div className="loading" style={{paddingTop:'4rem'}}>Memuat...</div>
-
-  if (session && worker) {
-    return <WorkerPortal worker={worker} onLogout={() => supabase.auth.signOut()} />
-  }
+  if (session && worker) return <WorkerPortal worker={worker} onLogout={() => supabase.auth.signOut()} />
 
   const ActiveComponent = TABS.find(t => t.id === activeTab)?.component
 
@@ -73,7 +71,6 @@ export default function App() {
           <button className="btn btn-sm btn-primary" onClick={() => setShowLogin(true)}>Login Pekerja</button>
         </div>
       </header>
-
       <nav className="tabs">
         {TABS.map(t => (
           <button key={t.id} className={`tab${activeTab===t.id?' active':''}`} onClick={() => setActiveTab(t.id)}>
@@ -81,17 +78,14 @@ export default function App() {
           </button>
         ))}
       </nav>
-
       <main className="content">
         {ActiveComponent
           ? <ActiveComponent key={refresh} onRefresh={triggerRefresh} />
           : <div>Halaman tidak ditemukan</div>}
       </main>
-
       <div style={{marginTop:24,textAlign:'center',fontSize:12,color:'#888'}}>
         Andhi Rahman – Bellagio
       </div>
-
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
     </div>
   )
